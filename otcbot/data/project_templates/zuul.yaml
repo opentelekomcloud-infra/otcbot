@@ -1,0 +1,13 @@
+- project:
+    merge-mode: squash-merge
+    default-branch: main
+    templates:
+      - publish-otc-docs-pti
+      {%+ if enable_api_ref %}- api-ref-jobs{% endif %}
+      {%+ if enable_rn %}- release-notes-jobs{% endif %}
+    check:
+      jobs:
+        - noop
+    gate:
+      jobs:
+        - noop
