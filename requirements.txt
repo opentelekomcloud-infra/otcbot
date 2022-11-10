@@ -1,2 +1,6 @@
 pbr!=2.1.0,>=2.0.0 # Apache-2.0
 jinja2
+GitPython
+matrix-nio[e2e]>=0.10.0
+Markdown>=3.1.1
+PyYAML>=5.1.2

@@ -13,31 +13,27 @@
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = [
-    'otcdocstheme'
-]
+extensions = ["otcdocstheme"]
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General information about the project.
-project = u'{{ description }}'
-copyright = u'2021, Various members of the OpenTelekomCloud'
+project = "{{ description }}"
+copyright = "2021, Various members of the OpenTelekomCloud"
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # Locations to exclude when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ["_build"]
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = 'otcdocs'
-html_theme_options = {
-    "sidebar_mode": "toctree"
-}
+html_theme = "otcdocs"
+html_theme_options = {"sidebar_mode": "toctree"}
 otcdocs_auto_name = False
 
 html_static_path = []
@@ -46,8 +42,11 @@ html_static_path = []
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index',
-     '%s.tex' % project,
-     u'%s Documentation' % project,
-     u'OpenTelekomCloud', 'manual'),
+    (
+        "index",
+        "%s.tex" % project,
+        "%s Documentation" % project,
+        "OpenTelekomCloud",
+        "manual",
+    ),
 ]

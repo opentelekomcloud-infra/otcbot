@@ -23,28 +23,31 @@ class InitProject:
     @classmethod
     def argparse_arguments(cls, parser) -> None:
         subparser = parser.add_parser(
-            'init_project', help='Initialize new project')
+            "init_project", help="Initialize new project"
+        )
+        subparser.add_argument("--name", required=True, help="project name")
         subparser.add_argument(
-            '--name', required=True, help='project name')
+            "--path",
+            required=True,
+            help="Path to the root folder where to initialize project",
+        )
+        subparser.add_argument("--description", help="Project description")
         subparser.add_argument(
-            '--path', required=True,
-            help='Path to the root folder where to initialize project')
-        subparser.add_argument(
-            '--description', help='Project description')
-        subparser.add_argument(
-            '--enable-api-ref', action='store_true',
-            help='Produce API-ref structure'
+            "--enable-api-ref",
+            action="store_true",
+            help="Produce API-ref structure",
         )
         subparser.add_argument(
-            '--enable-rn', action='store_true',
-            help='Produce ReleaseNotes structure'
+            "--enable-rn",
+            action="store_true",
+            help="Produce ReleaseNotes structure",
         )
 
     def _populate_template(self, src: str, dest, args) -> None:
         tm = Template(src)
-        with open(dest, 'w') as f:
+        with open(dest, "w") as f:
             f.write(tm.render(vars(args)))
-            f.write('\n')
+            f.write("\n")
 
     def _process_template_section(self, files: list, args) -> None:
         for f in files:
@@ -54,34 +57,33 @@ class InitProject:
             self._populate_template(
                 pkg_resources.resource_stream(
                     __name__, f"data/project_templates/{f}"
-                ).read().decode(),
+                )
+                .read()
+                .decode(),
                 dest_path,
-                args
+                args,
             )
 
     def execute(self, args):
         main_files = [
-            'setup.py',
-            'setup.cfg',
-            'tox.ini',
-            '.gitignore',
-            'README.rst',
-            'zuul.yaml',
-            'requirements.txt',
-            'test-requirements.txt'
+            "setup.py",
+            "setup.cfg",
+            "tox.ini",
+            ".gitignore",
+            "README.rst",
+            "zuul.yaml",
+            "requirements.txt",
+            "test-requirements.txt",
         ]
         doc_files = [
-            'doc/requirements.txt',
-            'doc/source/conf.py',
-            'doc/source/index.rst'
+            "doc/requirements.txt",
+            "doc/source/conf.py",
+            "doc/source/index.rst",
         ]
-        api_ref_files = [
-            'api-ref/source/conf.py',
-            'api-ref/source/index.rst'
-        ]
+        api_ref_files = ["api-ref/source/conf.py", "api-ref/source/index.rst"]
         rn_files = [
-            'releasenotes/source/conf.py',
-            'releasenotes/source/index.rst'
+            "releasenotes/source/conf.py",
+            "releasenotes/source/index.rst",
         ]
 
         self._process_template_section(main_files, args)

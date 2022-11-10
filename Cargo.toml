@@ -1,0 +1,24 @@
+[package]
+name = "otcbot"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "otcbot"
+test = true
+
+[dependencies]
+anyhow = "1"
+clap = { version = "~4.0" }
+dirs = "~4.0"
+matrix-sdk = { version = "~0.6", default-features = false, features = ["e2e-encryption", "markdown", "sled", "rustls-tls"] }
+serde = { version = "~1.0", features = ["derive"] }
+serde_yaml = "~0.9"
+tokio = { version = "~1.21", features = ["macros", "rt-multi-thread", "signal", "sync"] }
+tracing-subscriber = { version = "~0.3", features = ["env-filter"] }
+
+[dev-dependencies]
+
+[target.'cfg(all(target_env = "musl", target_pointer_width = "64"))'.dependencies.jemallocator]
+version = "0.3"

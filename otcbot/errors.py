@@ -11,6 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import setuptools
 
-setuptools.setup(setup_requires=["pbr>=2.0.0"], pbr=True)
+class ConfigError(RuntimeError):
+    """An error encountered during reading the config file.
+    Args:
+        msg: The message displayed to the user on error.
+    """
+
+    def __init__(self, msg: str):
+        super(ConfigError, self).__init__("%s" % (msg,))
